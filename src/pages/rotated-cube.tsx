@@ -1,13 +1,17 @@
 import { FC, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
+import Example, { ExampleHandle } from '../components/Example';
+
 export const Component: FC = () => {
-  const mainRef = useRef<HTMLElement>(null);
+  const exampleRef = useRef<ExampleHandle>(null);
 
   useEffect(() => {
-    if (!mainRef.current) {
+    if (!exampleRef.current || !exampleRef.current.renderer) {
       return;
     }
+
+    const renderer = exampleRef.current.renderer;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -16,11 +20,6 @@ export const Component: FC = () => {
       0.1,
       1000
     );
-
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    mainRef.current.append(renderer.domElement);
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -39,14 +38,9 @@ export const Component: FC = () => {
     }
 
     animate();
-
-    return () => {
-      mainRef.current?.removeChild(renderer.domElement);
-      renderer.dispose();
-    };
   }, []);
 
-  return <main ref={mainRef}></main>;
+  return <Example ref={exampleRef} />;
 };
 
 Component.displayName = 'Component(RotatedCube)';
