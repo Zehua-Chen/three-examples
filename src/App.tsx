@@ -5,13 +5,17 @@ import {
   createHashRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Index from './pages/index';
+import Index, { PAGE_URLS } from './pages/index';
 
 const router = createHashRouter(
   createRoutesFromElements(
     <>
       <Route path="/" Component={Index} />
-      <Route path="rotated-cube" lazy={() => import('./pages/rotated-cube')} />
+      <Route
+        path={PAGE_URLS.ROTATED_CUBE}
+        lazy={() => import('./pages/rotated-cube')}
+      />
+      <Route path={PAGE_URLS.LINES} lazy={() => import('./pages/lines')} />
     </>
   )
 );

@@ -48,3 +48,5 @@ export const Component: FC = () => {
 
   return <main ref={mainRef}></main>;
 };
+
+Component.displayName = 'Component(RotatedCube)';
