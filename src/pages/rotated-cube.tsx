@@ -1,7 +1,7 @@
 import { FC, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-const RotatedCube: FC = () => {
+export const Component: FC = () => {
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -48,7 +48,3 @@ const RotatedCube: FC = () => {
 
   return <main ref={mainRef}></main>;
 };
-
-RotatedCube.displayName = 'RotatedCube';
-
-export default RotatedCube;

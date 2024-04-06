@@ -1,16 +1,22 @@
-import { FC, lazy } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { FC } from 'react';
+import {
+  RouterProvider,
+  Route,
+  createHashRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 import Index from './pages/index';
-import RotatedCube from './pages/rotated-cube';
 
-const App: FC = () => (
-  <HashRouter>
-    <Routes>
+const router = createHashRouter(
+  createRoutesFromElements(
+    <>
       <Route path="/" Component={Index} />
-      <Route path="rotated-cube" Component={RotatedCube} />
-    </Routes>
-  </HashRouter>
+      <Route path="rotated-cube" lazy={() => import('./pages/rotated-cube')} />
+    </>
+  )
 );
+
+const App: FC = () => <RouterProvider router={router} />;
 
 App.displayName = 'App';
 
