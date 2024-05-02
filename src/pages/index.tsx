@@ -1,10 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-export const PAGE_URLS = {
-  ROTATED_CUBE: 'rotated-cube',
-  LINES: 'lines',
-};
+import { PAGE_URLS } from '../utils/pages';
 
 const PAGES = {
   [PAGE_URLS.ROTATED_CUBE]: {

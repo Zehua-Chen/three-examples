@@ -5,7 +5,9 @@ import {
   createHashRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Index, { PAGE_URLS } from './pages/index';
+
+import Index from './pages/index';
+import { PAGE_URLS } from './utils/pages';
 
 const router = createHashRouter(
   createRoutesFromElements(
